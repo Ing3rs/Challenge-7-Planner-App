@@ -3,8 +3,6 @@
 
 /*
 
-> use moment.js
-
 when adding an event 'appointment added to local storage' message above main calendar
 
 compare the current time using moment.js to the hour in the day
@@ -65,79 +63,173 @@ save button changes color when hovered over
     
 > if time, add some flair... (dark mode? lesson 01/03)
 
+> check it' responsive
+
 */
 
+// MY CODE
+// ------------------------------------------------------------
 
-// DEFINE VARIABLES
-// -----------------------------------------
+var saveButton = $('.saveBtn');
+var confirmationMsg = $('#confirmationMessage');
 
-var calendarBlock = $("#calendar-block");
+// current date & time
+var today = moment().format("dddd Do MMMM YYYY");
+var currentHour = moment().format("HH");
 
-// object for each time of day for local storage to push to?
-
-
-// CURRENT DATE & TIME
-// -----------------------------------------
-
-var today = moment().format("dddd Do MMMM YYYY")
+// print today's date at top of page: 
 $("#currentDay").text(today);
 
-var currentHour = moment().format("HH:mm:ss");
+// Calendar times for checkTime()
+// must be an easier way to do this? if statement or moment calendar?
+
+var nineAMBlock = $("#calendarHour-9");
+var nineAM = moment().format("09");
+
+var tenAMBlock = $("#calendarHour-10");
+var tenAM = moment().format("10");
+
+var elevenAMBlock = $("#calendarHour-11");
+var elevenAM = moment().format("11");
+
+var twelvePMBlock = $("#calendarHour-12");
+var twelvePM = moment().format("12");
+
+var onePMBlock = $("#calendarHour-1");
+var onePM = moment().format("13");
+
+var twoPMBlock = $("#calendarHour-2");
+var twoPM = moment().format("14");
+
+var threePMBlock = $("#calendarHour-3");
+var threePM = moment().format("15");
+
+var fourPMBlock = $("#calendarHour-4");
+var fourPM = moment().format("16");
+
+var fivePMBlock = $("#calendarHour-5");
+var fivePM = moment().format("17");
+
+
+
+
+
+
+// call functions
+
+
 
 // MAIN FUNCTIONS
 //------------------------------------------
 
 // calendar color coding
+function checkTime() {
 
-// moment().calendar({
-//     sameDay: '[Today]',
-//     nextDay: '[Tomorrow]',
-//     nextWeek: 'dddd',
-//     lastDay: '[Yesterday]',
-//     lastWeek: '[Last] dddd',
-//     sameElse: 'DD/MM/YYYY'
-// });
+    var calendarHours = [nineAM, tenAM, elevenAM, twelvePM, onePM, twoPM, threePM, fourPM, fivePM];
 
-// var nineAM = $("#calendarHour-9");
-//     nineAM = moment().format("09:00:00")
+    var hourBlock = [nineAMBlock, tenAMBlock, elevenAMBlock, twelvePMBlock, onePMBlock, twoPMBlock, threePMBlock, fourPMBlock, fivePMBlock];
 
-// moment().calendar({
-//   sameDay: function (now) {
-//     if (this.isBefore(now)) {
-//       return '[Will Happen Today]';
-//     } else {
-//       return '[Happened Today]';
-//     }
-//     /* ... */
-//   }
-// });
+    for (var i = 0; i < calendarHours.length; i++)
 
-var nineAM = $("#calendarHour-9");
-    nineAM = moment().format("09:00:00");
+        if (calendarHours[i] > currentHour) {
+            hourBlock[i].addClass('future');
 
-function checkTime () {
+        } else if (calendarHours[i] < currentHour) {
+            hourBlock[i].addClass('past');
 
-    if (nineAM === currentHour) {
-        calendarBlock.addClass('present');
-
-    } else if (nineAM < currentHour) {
-        calendarBlock.addClass('past');
-
-    } else {
-        calendarBlock.addClass('future');
-    }
+        } else {
+            hourBlock[i].addClass('present');
+        }
 }
-
 
 checkTime();
 
-// pull local storage
+// store calendar events
 
 
+// retrieve calender events
 
-// EVENT LISTENERS
-// -----------------------------------------
+function retrieveEvents() {
 
-// save button
-// (look at last weeks challenge - highscore board for local storage?)
-// (include successfully added message at top of calendar) - maybe add a jQuery dialogue box instead?
+    var hour9 = JSON.parse(localStorage.getItem('hour9'));
+    nineAMBlock.text(hour9);
+
+    var hour10 = JSON.parse(localStorage.getItem('hour10'));
+    tenAMBlock.text(hour10);
+
+    var hour11 = JSON.parse(localStorage.getItem('hour11'));
+    elevenAMBlock.text(hour11);
+
+    var hour12 = JSON.parse(localStorage.getItem('hour12'));
+    twelvePMBlock.text(hour12);
+
+    var hour1 = JSON.parse(localStorage.getItem('hour1'));
+    onePMBlock.text(hour1);
+
+    var hour2 = JSON.parse(localStorage.getItem('hour2'));
+    twoPMBlock.text(hour2);
+
+    var hour3 = JSON.parse(localStorage.getItem('hour3'));
+    threePMBlock.text(hour3);
+
+    var hour4 = JSON.parse(localStorage.getItem('hour4'));
+    fourPMBlock.text(hour4);
+
+    var hour5 = JSON.parse(localStorage.getItem('hour5'));
+    fivePMBlock.text(hour5);
+
+};
+
+retrieveEvents();
+
+
+// save button even listener (would work better on each individual button)
+
+saveButton.on("click", function (event) {
+
+    var hour9 = $("#calendarHour-9").val().trim();
+    localStorage.setItem("hour9", JSON.stringify(hour9));
+
+    var hour10 = $("#calendarHour-10").val().trim();
+    localStorage.setItem("hour10", JSON.stringify(hour10));
+
+    var hour11 = $("#calendarHour-11").val().trim();
+    localStorage.setItem("hour11", JSON.stringify(hour11));
+
+    var hour12 = $("#calendarHour-12").val().trim();
+    localStorage.setItem("hour12", JSON.stringify(hour12));
+
+    var hour1 = $("#calendarHour-1").val().trim();
+    localStorage.setItem("hour1", JSON.stringify(hour1));
+
+    var hour2 = $("#calendarHour-2").val().trim();
+    localStorage.setItem("hour2", JSON.stringify(hour2));
+
+    var hour3 = $("#calendarHour-3").val().trim();
+    localStorage.setItem("hour3", JSON.stringify(hour3));
+
+    var hour4 = $("#calendarHour-4").val().trim();
+    localStorage.setItem("hour4", JSON.stringify(hour4));
+
+    var hour5 = $("#calendarHour-5").val().trim();
+    localStorage.setItem("hour5", JSON.stringify(hour5));
+
+    // displayMessage('confirm', "Event saved!");
+
+    
+});
+
+// // display message
+// function displayMessage(type, message) {
+//     var msgP = document.createElement("p");
+//     msgP.textContent = message;
+//     msgP.setAttribute("class", type);
+//     confirmationMsg.append(msgP)
+
+//     // remove message after 2 seconds to stop messages stacking up  
+//     clearTimeout(messageTimeout);
+//     var messageTimeout = setTimeout(function () {
+//         msgP.classList.add("hide");
+//     }, 1000);
+
+// }
