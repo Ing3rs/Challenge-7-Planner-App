@@ -71,19 +71,65 @@ save button changes color when hovered over
 // DEFINE VARIABLES
 // -----------------------------------------
 
+var calendarBlock = $("#calendar-block");
+
 // object for each time of day for local storage to push to?
 
 
 // CURRENT DATE & TIME
 // -----------------------------------------
 
+var today = moment().format("dddd Do MMMM YYYY")
+$("#currentDay").text(today);
 
+var currentHour = moment().format("HH:mm:ss");
 
 // MAIN FUNCTIONS
 //------------------------------------------
 
 // calendar color coding
 
+// moment().calendar({
+//     sameDay: '[Today]',
+//     nextDay: '[Tomorrow]',
+//     nextWeek: 'dddd',
+//     lastDay: '[Yesterday]',
+//     lastWeek: '[Last] dddd',
+//     sameElse: 'DD/MM/YYYY'
+// });
+
+// var nineAM = $("#calendarHour-9");
+//     nineAM = moment().format("09:00:00")
+
+// moment().calendar({
+//   sameDay: function (now) {
+//     if (this.isBefore(now)) {
+//       return '[Will Happen Today]';
+//     } else {
+//       return '[Happened Today]';
+//     }
+//     /* ... */
+//   }
+// });
+
+var nineAM = $("#calendarHour-9");
+    nineAM = moment().format("09:00:00");
+
+function checkTime () {
+
+    if (nineAM === currentHour) {
+        calendarBlock.addClass('present');
+
+    } else if (nineAM < currentHour) {
+        calendarBlock.addClass('past');
+
+    } else {
+        calendarBlock.addClass('future');
+    }
+}
+
+
+checkTime();
 
 // pull local storage
 
