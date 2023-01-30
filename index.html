@@ -7,7 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <!-- bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- fonts -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -27,130 +28,175 @@
     <p id="currentDay" class="lead"></p>
   </header>
   <div class="container">
+
     <!-- Timeblocks go here -->
+
     <div id="confirmationMessage"></div>
 
     <!-- 9AM -->
     <div class="row time-block">
 
-      <div class="col hour">
+      <!-- block for time -->
+      <div class="col-1 hour">
         <p>9 AM</p>
       </div>
 
-      <textarea class="col-10 description" id="calendarHour-9"></textarea>
+      <!-- editable text area -->
+      <textarea class="col-8 description" id="calendarHour-9"></textarea>
 
-      <button class="col-1 saveBtn btn">Save</button>
+      <!-- save event button which triggers modal -->
+      <button type="button" class="col-1 saveBtn btn" data-toggle="modal" data-target="#exampleModalCenter"><i
+          class="fas fa-save"></i></button>
 
     </div>
 
     <!-- 10AM -->
     <div class="row time-block">
 
-      <div class="col hour">
+      <div class="col-1 hour">
         <p>10 AM</p>
       </div>
 
-      <textarea class="col-10 description" id="calendarHour-10"></textarea>
+      <textarea class="col-8 description" id="calendarHour-10"></textarea>
 
-      <button class="col-1 saveBtn btn">Save</button>
+      <button type="button" class="col-1 saveBtn btn" data-toggle="modal" data-target="#exampleModalCenter"><i
+          class="fas fa-save"></i></button>
 
     </div>
 
     <!-- 11AM -->
     <div class="row time-block">
 
-      <div class="col hour">
+      <div class="col-1 hour">
         <p>11 AM</p>
       </div>
 
-      <textarea class="col-10 description" id="calendarHour-11"></textarea>
+      <textarea class="col-8 description" id="calendarHour-11"></textarea>
 
-      <button class="col-1 saveBtn btn">Save</button>
+      <button type="button" class="col-1 saveBtn btn" data-toggle="modal" data-target="#exampleModalCenter"><i
+          class="fas fa-save"></i></button>
 
     </div>
 
     <!-- 12PM -->
     <div class="row time-block">
 
-      <div class="col hour">
+      <div class="col-1 hour">
         <p>12 AM</p>
       </div>
 
-      <textarea class="col-10 description" id="calendarHour-12"></textarea>
+      <textarea class="col-8 description" id="calendarHour-12"></textarea>
 
-      <button class="col-1 saveBtn btn">Save</button>
+      <button type="button" class="col-1 saveBtn btn" data-toggle="modal" data-target="#exampleModalCenter"><i
+          class="fas fa-save"></i></button>
 
     </div>
 
     <!-- 1PM -->
     <div class="row time-block">
 
-      <div class="col hour">
+      <div class="col-1 hour">
         <p>1 PM</p>
       </div>
 
-      <textarea class="col-10 description" id="calendarHour-1"></textarea>
+      <textarea class="col-8 description" id="calendarHour-1"></textarea>
 
-      <button class="col-1 saveBtn btn">Save</button>
+      <button type="button" class="col-1 saveBtn btn" data-toggle="modal" data-target="#exampleModalCenter"><i
+          class="fas fa-save"></i></button>
 
     </div>
 
     <!-- 2PM -->
     <div class="row time-block">
 
-      <div class="col hour">
+      <div class="col-1 hour">
         <p>2 PM</p>
       </div>
 
-      <textarea class="col-10 description" id="calendarHour-2"></textarea>
+      <textarea class="col-8 description" id="calendarHour-2"></textarea>
 
-      <button class="col-1 saveBtn btn">Save</button>
+      <button type="button" class="col-1 saveBtn btn" data-toggle="modal" data-target="#exampleModalCenter"><i
+          class="fas fa-save"></i></button>
 
     </div>
 
     <!-- 3PM -->
     <div class="row time-block">
 
-      <div class="col hour">
+      <div class="col-1 hour">
         <p>3 PM</p>
       </div>
 
-      <textarea class="col-10 description" id="calendarHour-3"></textarea>
+      <textarea class="col-8 description" id="calendarHour-3"></textarea>
 
-      <button class="col-1 saveBtn btn">Save</button>
+      <button type="button" class="col-1 saveBtn btn" data-toggle="modal" data-target="#exampleModalCenter"><i
+          class="fas fa-save"></i></button>
 
     </div>
 
     <!-- 4PM -->
     <div class="row time-block">
 
-      <div class="col hour">
+      <div class="col-1 hour">
         <p>4 PM</p>
       </div>
 
-      <textarea class="col-10 description" id="calendarHour-4"></textarea>
+      <textarea class="col-8 description" id="calendarHour-4"></textarea>
 
-      <button class="col-1 saveBtn btn">Save</button>
+      <button type="button" class="col-1 saveBtn btn" data-toggle="modal" data-target="#exampleModalCenter"><i
+          class="fas fa-save"></i></button>
 
     </div>
 
     <!-- 5PM -->
     <div class="row time-block">
 
-      <div class="col hour">
+      <div class="col-1 hour">
         <p>5 PM</p>
       </div>
 
-      <textarea class="col-10 description" id="calendarHour-5"></textarea>
+      <textarea class="col-8 description" id="calendarHour-5"></textarea>
 
-      <button class="col-1 saveBtn btn">Save</button>
+      <button type="button" class="col-1 saveBtn btn" data-toggle="modal" data-target="#exampleModalCenter"><i
+          class="fas fa-save"></i></button>
 
     </div>
 
-
-
-
   </div>
+
+
+  <!-- Modal for event saved message -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Event saved</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Make sure to take breaks too! ☕</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

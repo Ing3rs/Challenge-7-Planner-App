@@ -2,6 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background: url(../images/CGNGv7m.png) no-repeat fixed center;
 }
 
 textarea {
@@ -15,7 +16,7 @@ textarea {
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  background-color: white;
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
@@ -33,7 +34,7 @@ textarea {
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;
+  justify-content: center;
 }
 
 .hour {
@@ -61,6 +62,7 @@ textarea {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  border-bottom: 1px solid white;
   background-color: #06aed5;
   color: white;
 }
@@ -71,8 +73,28 @@ textarea {
 }
 
 
-/* my additions:  */
+
 .col-1, .col-10 {
   height: 80px;
+}
+
+.col-8 {
   border-top: 1px solid white;
+}
+
+.modal-header {
+  background-color: #06aed5;
+}
+
+.modal-body p {
+  padding-top: 10px;
+}
+
+.modal-title {
+  font-weight: bold;
+  color: white;
+}
+
+.modal-footer {
+  border: 0px;
 }

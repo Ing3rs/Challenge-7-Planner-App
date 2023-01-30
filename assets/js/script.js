@@ -1,74 +1,4 @@
-// notes from class
-// ----------------
-
-/*
-
-when adding an event 'appointment added to local storage' message above main calendar
-
-compare the current time using moment.js to the hour in the day
-
-if current hour is greater than hours in the day (greyed out as in past)
-current hour is the same (highlight red)
-current hour is less than hours in in the day (green as in future)
-
-compare time together: 
-moment().hour() - give current hour
-then compare this to hours in calendar
-
-calendar is 9-5
-easier to compare if 24 hr clock
-
-the save button will need an event listener to pick up when users click it and put the input in local storage
-
-add time blocks in html file
-
-should only be able to save one event in each time block but can be multi-line
-
-save button changes color when hovered over
-
-*/
-
-// Challenge equirements: 
-// ----------------------
-
-/* The app should:
-
-- Display the current day at the top of the calendar when a user opens the planner.
-- Present timeblocks for standard business hours when the user scrolls down.
-- Color-code each timeblock based on past, present, and future when the timeblock is viewed.
-- Allow a user to enter an event when they click a timeblock.
-- Save the event in local storage when the save button is clicked in that timeblock.
-- Persist events between refreshes of a page.
-
-*/
-
-
-// Pseudocode
-// -----------
-
-/*
-
-> current date at the top under the header text
-
-> calendar blocks are 9am - 5pm
-    > grey = past times
-    > red = current time
-    > green = future time
-
-    > each calendar block is an input field
-
-    > save icon on far right which has hover affect
-        > on click, save user input into local storage and remain after page refresh
-        > removing text and save, clears field/local storage
-    
-> if time, add some flair... (dark mode? lesson 01/03)
-
-> check it' responsive
-
-*/
-
-// MY CODE
-// ------------------------------------------------------------
+// define variables
 
 var saveButton = $('.saveBtn');
 var confirmationMsg = $('#confirmationMessage');
@@ -81,8 +11,6 @@ var currentHour = moment().format("HH");
 $("#currentDay").text(today);
 
 // Calendar times for checkTime()
-// must be an easier way to do this? if statement or moment calendar?
-
 var nineAMBlock = $("#calendarHour-9");
 var nineAM = moment().format("09");
 
@@ -111,24 +39,21 @@ var fivePMBlock = $("#calendarHour-5");
 var fivePM = moment().format("17");
 
 
-
-
-
-
 // call functions
+checkTime();
+retrieveEvents();
 
-
-
-// MAIN FUNCTIONS
-//------------------------------------------
 
 // calendar color coding
 function checkTime() {
 
+    // add all times to an array
     var calendarHours = [nineAM, tenAM, elevenAM, twelvePM, onePM, twoPM, threePM, fourPM, fivePM];
 
+    // add all time block elements into an array
     var hourBlock = [nineAMBlock, tenAMBlock, elevenAMBlock, twelvePMBlock, onePMBlock, twoPMBlock, threePMBlock, fourPMBlock, fivePMBlock];
 
+    // compare the above two arrays and assign color depending on time of day in relation to current time
     for (var i = 0; i < calendarHours.length; i++)
 
         if (calendarHours[i] > currentHour) {
@@ -142,18 +67,17 @@ function checkTime() {
         }
 }
 
-checkTime();
 
-// store calendar events
-
-
-// retrieve calender events
-
+// retrieve stored calender events
 function retrieveEvents() {
 
+    // retrieve any stored info from local storage for '9AM'
     var hour9 = JSON.parse(localStorage.getItem('hour9'));
+
+    // add that info to the 9AM element
     nineAMBlock.text(hour9);
 
+    // repeat for all times
     var hour10 = JSON.parse(localStorage.getItem('hour10'));
     tenAMBlock.text(hour10);
 
@@ -180,11 +104,82 @@ function retrieveEvents() {
 
 };
 
-retrieveEvents();
+
+// save button even listener - saves input to local storage on click
+// I originally put this in one event listener which gathers the info from all hour text fields, but decided to split it out to avoid any accidental saving of other times of the day
+
+saveButton[0].addEventListener("click", function (event) {
+
+    // pull input from 9AM row
+    var hour9 = $("#calendarHour-9").val().trim();
+    
+    // store input into 9AM variable
+    localStorage.setItem("hour9", JSON.stringify(hour9));
+
+});
+
+// repeat on all hours:
+
+saveButton[1].addEventListener("click", function (event) {
+
+    var hour10 = $("#calendarHour-10").val().trim();
+    localStorage.setItem("hour10", JSON.stringify(hour10));
+
+});
+
+saveButton[2].addEventListener("click", function (event) {
+
+    var hour11 = $("#calendarHour-11").val().trim();
+    localStorage.setItem("hour11", JSON.stringify(hour11));
+
+});
+
+saveButton[3].addEventListener("click", function (event) {
+
+    var hour12 = $("#calendarHour-12").val().trim();
+    localStorage.setItem("hour12", JSON.stringify(hour12));
+
+});
+
+saveButton[4].addEventListener("click", function (event) {
+
+    var hour1 = $("#calendarHour-1").val().trim();
+    localStorage.setItem("hour1", JSON.stringify(hour1));
+
+});
+
+saveButton[5].addEventListener("click", function (event) {
+
+    var hour2 = $("#calendarHour-2").val().trim();
+    localStorage.setItem("hour2", JSON.stringify(hour2));
+
+});
+
+saveButton[6].addEventListener("click", function (event) {
+
+    var hour3 = $("#calendarHour-3").val().trim();
+    localStorage.setItem("hour3", JSON.stringify(hour3));
+
+});
+
+saveButton[7].addEventListener("click", function (event) {
+
+    var hour4 = $("#calendarHour-4").val().trim();
+    localStorage.setItem("hour4", JSON.stringify(hour4));
+
+});
+
+saveButton[8].addEventListener("click", function (event) {
+
+    var hour5 = $("#calendarHour-5").val().trim();
+    localStorage.setItem("hour5", JSON.stringify(hour5));
+
+});
 
 
-// save button even listener (would work better on each individual button)
+// original event listener: 
 
+/*
 saveButton.on("click", function (event) {
 
     var hour9 = $("#calendarHour-9").val().trim();
@@ -214,22 +209,5 @@ saveButton.on("click", function (event) {
     var hour5 = $("#calendarHour-5").val().trim();
     localStorage.setItem("hour5", JSON.stringify(hour5));
 
-    // displayMessage('confirm', "Event saved!");
-
-    
 });
-
-// // display message
-// function displayMessage(type, message) {
-//     var msgP = document.createElement("p");
-//     msgP.textContent = message;
-//     msgP.setAttribute("class", type);
-//     confirmationMsg.append(msgP)
-
-//     // remove message after 2 seconds to stop messages stacking up  
-//     clearTimeout(messageTimeout);
-//     var messageTimeout = setTimeout(function () {
-//         msgP.classList.add("hide");
-//     }, 1000);
-
-// }
+*/
